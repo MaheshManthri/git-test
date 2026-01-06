@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Business Analytics & Decision Support System</title>
+
+    <!-- LINK TO EXTERNAL CSS (IMPORTANT) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            Business Analytics & Decision Support System
+        </div>
+
+        <nav>
+        
+        </nav>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+
+        <!-- CALCULATOR BOX -->
+        <div class="calculator-box">
+
+            <h2>Hypothesis Test Calculator</h2>
+
+            <!-- Test Type -->
+            <div class="row">
+                <label>Choose Test Type</label>
+                <select>
+                    <option>One Sample t-Test</option>
+                    <option>Two Sample t-Test</option>
+                    <option>Paired t-Test</option>
+                </select>
+            </div>
+
+            <!-- Hypothesis Inputs -->
+            <div class="row">
+                <label>Hypothesized Mean (μ₀)</label>
+                <input type="number" placeholder="e.g. 500">
+
+                <label>α</label>
+                <select>
+                    <option>0.01</option>
+                    <option selected>0.05</option>
+                    <option>0.10</option>
+                </select>
+
+                <label>Alternative</label>
+                <select>
+                    <option>Two-tailed</option>
+                    <option>Right-tailed</option>
+                    <option>Left-tailed</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <!-- Data Input -->
+            <h3>Enter Data</h3>
+            <table>
+                <tr>
+                    <th>Sample Values</th>
+                </tr>
+                <tr>
+                    <td><input type="number"></td>
+                </tr>
+            </table>
+
+            <button>Add Row</button>
+
+            <hr>
+
+            <!-- Business Context -->
+            <label>Business Decision Context</label>
+            <textarea placeholder="e.g. Test whether new pricing increases sales"></textarea>
+
+            <br><br>
+           <br><br><br> <button>Run </button>
+
+        </div>
+        <!-- END CALCULATOR -->
+
+    </div>
+<script src="hyp_javascript.js"></script>
+</body>
+</html>
+
+    <!-- Footer -->
