@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Business Analytics & Decision Support System</title>
 
-    <!-- LINK TO EXTERNAL CSS (IMPORTANT) -->
+    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -15,10 +15,6 @@
         <div class="logo">
             Business Analytics & Decision Support System
         </div>
-
-        <nav>
-        
-        </nav>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -29,66 +25,84 @@
 
             <h2>Hypothesis Test Calculator</h2>
 
-            <!-- Test Type -->
+            <!-- 1️⃣ Test Type -->
             <div class="row">
                 <label>Choose Test Type</label>
-                <select>
-                    <option>One Sample t-Test</option>
-                    <option>Two Sample t-Test</option>
-                    <option>Paired t-Test</option>
+                <select id="testType" onchange="updateInputs()">
+                    <option value="">Select</option>
+                    <option value="one">One Sample t-Test</option>
+                    <option value="two">Two Sample t-Test</option>
+                    <option value="paired">Paired t-Test</option>
                 </select>
             </div>
 
-            <!-- Hypothesis Inputs -->
+            <!-- 2️⃣ Hypothesis Inputs -->
             <div class="row">
                 <label>Hypothesized Mean (μ₀)</label>
-                <input type="number" placeholder="e.g. 500">
+                <input type="number" id="mu0" placeholder="e.g. 500">
 
                 <label>α</label>
-                <select>
-                    <option>0.01</option>
-                    <option selected>0.05</option>
-                    <option>0.10</option>
+                <select id="alpha">
+                    <option value="0.01">0.01</option>
+                    <option value="0.05" selected>0.05</option>
+                    <option value="0.10">0.10</option>
                 </select>
 
                 <label>Alternative</label>
-                <select>
-                    <option>Two-tailed</option>
-                    <option>Right-tailed</option>
-                    <option>Left-tailed</option>
+                <select id="alternative">
+                    <option value="Two-tailed">Two-tailed</option>
+                    <option value="Right-tailed">Right-tailed</option>
+                    <option value="Left-tailed">Left-tailed</option>
                 </select>
             </div>
 
             <hr>
 
-            <!-- Data Input -->
-            <h3>Enter Data</h3>
-            <table>
-                <tr>
-                    <th>Sample Values</th>
-                </tr>
-                <tr>
-                    <td><input type="number"></td>
-                </tr>
-            </table>
+            <!-- 3️⃣ Data Input -->
+            <h3>Enter Sample Data</h3>
 
-            <button>Add Row</button>
+            <div id="dataSection">
+                <!-- Default One-Sample Input -->
+                <table>
+                    <tr>
+                        <th>Sample Values</th>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="sample-input"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="number" class="sample-input"></td>
+                    </tr>
+                </table>
+
+                <button type="button" onclick="addRow()">Add Row</button>
+            </div>
 
             <hr>
 
-            <!-- Business Context -->
-            <label>Business Decision Context</label>
-            <textarea placeholder="e.g. Test whether new pricing increases sales"></textarea>
+            <!-- 4️⃣ Business Context -->
+            <div class="row">
+                <label>Business Decision Context</label>
+            </div>
+            <textarea id="businessContext" placeholder="e.g. Test whether new pricing increases sales"></textarea>
 
             <br><br>
-           <br><br><br> <button>Run </button>
+
+            <!-- 5️⃣ Run Button -->
+            <button onclick="runHypothesisTest()">Run Hypothesis Test</button>
+
+            <hr>
+
+            <!-- 6️⃣ Output -->
+            <div id="output" class="output-box"></div>
 
         </div>
         <!-- END CALCULATOR -->
 
     </div>
-<script src="hyp_javascript.js"></script>
+
+    <!-- JavaScript -->
+    <script src="hyp_javascript.js"></script>
+
 </body>
 </html>
-
-    <!-- Footer -->
