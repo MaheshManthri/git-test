@@ -3,106 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title>Business Analytics & Decision Support System</title>
-
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            Business Analytics & Decision Support System
-        </div>
-    </header>
+<header>
+    <div class="logo">Business Analytics & Decision Support System</div>
+</header>
 
-    <!-- MAIN CONTENT -->
-    <div class="main">
+<div class="main">
+<div class="calculator-box">
 
-        <!-- CALCULATOR BOX -->
-        <div class="calculator-box">
+<h2>Hypothesis Test Calculator</h2>
 
-            <h2>Hypothesis Test Calculator</h2>
+<!-- Hypotheses -->
+<div class="row">
+    <label>Hypothesized Mean (μ₀)</label>
+    <input type="number" id="mu0">
 
-            <!-- 1️⃣ Test Type -->
-            <div class="row">
-                <label>Choose Test Type</label>
-                <select id="testType" onchange="updateInputs()">
-                    <option value="">Select</option>
-                    <option value="one">One Sample t-Test</option>
-                    <option value="two">Two Sample t-Test</option>
-                    <option value="paired">Paired t-Test</option>
-                </select>
-            </div>
+    <label>Alternative Mean (μ)</label>
+    <input type="number" id="mu1">
+</div>
 
-            <!-- 2️⃣ Hypothesis Inputs -->
-            <div class="row">
-                <label>Hypothesized Mean (μ₀)</label>
-                <input type="number" id="mu0" placeholder="e.g. 500">
+<div class="row">
+    <label>Significance Level (α)</label>
+    <select id="alpha">
+        <option value="0.01">0.01</option>
+        <option value="0.05" selected>0.05</option>
+        <option value="0.10">0.10</option>
+    </select>
 
-                <label>α</label>
-                <select id="alpha">
-                    <option value="0.01">0.01</option>
-                    <option value="0.05" selected>0.05</option>
-                    <option value="0.10">0.10</option>
-                </select>
+    <label>Decimal Places</label>
+    <select id="decimals">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+</div>
 
-                <label>Alternative</label>
-                <select id="alternative">
-                    <option value="Two-tailed">Two-tailed</option>
-                    <option value="Right-tailed">Right-tailed</option>
-                    <option value="Left-tailed">Left-tailed</option>
-                </select>
-            </div>
+<hr>
 
-            <hr>
+<!-- Sample Info -->
+<div class="row">
+    <label>Sample Mean (x̄)</label>
+    <input type="number" id="xbar">
 
-            <!-- 3️⃣ Data Input -->
-            <h3>Enter Sample Data</h3>
+    <label>Sample Size (n)</label>
+    <input type="number" id="n">
+</div>
 
-            <div id="dataSection">
-                <!-- Default One-Sample Input -->
-                <table>
-                    <tr>
-                        <th>Sample Values</th>
-                    </tr>
-                    <tr>
-                        <td><input type="number" class="sample-input"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="number" class="sample-input"></td>
-                    </tr>
-                </table>
+<hr>
 
-                <button type="button" onclick="addRow()">Add Row</button>
-            </div>
+<!-- Std Deviation -->
+<div class="row">
+    <label>Do you know the population standard deviation?</label>
+    <select id="stdKnown" onchange="toggleStd()">
+        <option value="">Select</option>
+        <option value="yes">Yes</option>
+        <option value="no">No</option>
+    </select>
+</div>
 
-            <hr>
+<div class="row" id="sigmaRow" style="display:none;">
+    <label>Population Std Deviation (σ)</label>
+    <input type="number" id="sigma">
+</div>
 
-            <!-- 4️⃣ Business Context -->
-            <div class="row">
-                <label>Business Decision Context</label>
-            </div>
-            <textarea id="businessContext" placeholder="e.g. Test whether new pricing increases sales"></textarea>
+<div class="row" id="sRow" style="display:none;">
+    <label>Sample Std Deviation (s)</label>
+    <input type="number" id="s">
+</div>
 
-            <br><br>
+<br>
 
-            <!-- 5️⃣ Run Button -->
-            <button onclick="runHypothesisTest()">Run Hypothesis Test</button>
+<button onclick="runTest()">Run Hypothesis Test</button>
 
-            <hr>
+<hr>
 
-            <!-- 6️⃣ Output -->
-            <div id="output" class="output-box"></div>
+<div id="output" class="output-box"></div>
 
-        </div>
-        <!-- END CALCULATOR -->
+</div>
+</div>
 
-    </div>
-
-    <!-- JavaScript -->
-    <script src="hyp_javascript.js"></script>
-
+<script src="hyp_javascript.js"></script>
 </body>
 </html>

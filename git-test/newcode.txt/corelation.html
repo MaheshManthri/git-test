@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spearman Rank Correlation – Decision Assistant</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f6fb;
+    padding:20px;
+}
+.container{
+    background:#fff;
+    padding:20px;
+    border-radius:8px;
+    max-width:1200px;
+    margin:auto;
+}
+.info{
+    background:#eaf3ff;
+    padding:15px;
+    border-left:5px solid #3498db;
+    margin-bottom:20px;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+th{
+    background:#f0f4f8;
+}
+input{
+    width:90%;
+    padding:6px;
+}
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+}
+.btn-calc{
+    background:#b3dcff;
+    margin-top:10px;
+}
+#addRankBtn{
+    background:#d6ecff;
+    font-size:18px;
+}
+.conclusion{
+    background:#f6fff9;
+    padding:15px;
+    margin-top:20px;
+    border-left:5px solid #2ecc71;
+}
+.calcSteps{
+    background:#fff;
+    padding:12px;
+    margin-top:15px;
+    border-left:5px solid #3498db;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="info">
+<b>Spearman Rank Correlation</b> measures relationship strength using ranks.<br><br>
+<b>Formula:</b> ρ = 1 − (6 Σ d²) / [ n ( n² − 1 ) ]
+</div>
+
+<h3>Input Data</h3>
+
+<table id="inputTable">
+<thead>
+<tr>
+<th>Obs</th>
+<th contenteditable="true">Rank 1</th>
+<th contenteditable="true">Rank 2</th>
+<th id="rank3Header">
+<button id="addRankBtn" onclick="addRank()">➕</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input class="r1" type="number"></td>
+<td><input class="r2" type="number"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<button class="btn-calc" onclick="calculate()">📊 Calculate Correlation</button>
+
+<h3>Calculation Table</h3>
+<table id="calcTable"></table>
+
+<div class="calcSteps" id="steps"></div>
+
+<div class="conclusion" id="conclusion"></div>
+
+</div>
+
+<script>
+let hasRank3=false;
+
+/* ADD RANK-3 */
+function addRank(){
+    if(hasRank3) return;
+    hasRank3=true;
+
+    document.getElementById("rank3Header").innerHTML=
+        `<span contenteditable="true">Rank 3</span>`;
+
+    document.querySelectorAll("#inputTable tbody tr").forEach(row=>{
+        row.insertCell().innerHTML=`<input class="r3" type="number">`;
+    });
+}
+
+/* AUTO ADD ROW */
+document.addEventListener("keydown",e=>{
+    if(e.key==="Enter" && e.target.tagName==="INPUT"){
+        let row=e.target.closest("tr");
+        let r1=row.querySelector(".r1")?.value;
+        let r2=row.querySelector(".r2")?.value;
+        if(r1 && r2){
+            addRow();
+            document.querySelectorAll(".r1").at(-1).focus();
+        }
+        e.preventDefault();
+    }
+});
+
+function addRow(){
+    let tb=document.querySelector("#inputTable tbody");
+    let r=tb.insertRow();
+    r.innerHTML=`
+    <td>${tb.rows.length}</td>
+    <td><input class="r1" type="number"></td>
+    <td><input class="r2" type="number"></td>
+    ${hasRank3?'<td><input class="r3" type="number"></td>':'<td></td>'}`;
+}
+
+/* RANKING */
+function rank(arr){
+    let s=[...arr].slice().sort((a,b)=>a-b);
+    return arr.map(v=>s.indexOf(v)+1);
+}
+
+/* MAIN CALCULATE */
+function calculate(){
+    let r1=[],r2=[],r3=[];
+    document.querySelectorAll(".r1").forEach((el,i)=>{
+        let r2el=document.querySelectorAll(".r2")[i];
+        let r3el=document.querySelectorAll(".r3")[i];
+        if(el.value && r2el.value){
+            r1.push(+el.value);
+            r2.push(+r2el.value);
+            if(hasRank3 && r3el?.value) r3.push(+r3el.value);
+        }
+    });
+
+    if(r1.length<2) return;
+
+    hasRank3 ? calcThree(r1,r2,r3) : calcTwo(r1,r2);
+}
+
+/* TWO RANK MODE */
+function calcTwo(a,b){
+    let R1=rank(a),R2=rank(b);
+    let n=R1.length,sum=0;
+
+    let html=`<thead><tr>
+    <th>Obs</th><th>R1</th><th>R2</th><th>d</th><th>d²</th>
+    </tr></thead><tbody>`;
+
+    R1.forEach((v,i)=>{
+        let d=v-R2[i];
+        sum+=d*d;
+        html+=`<tr><td>${i+1}</td><td>${v}</td><td>${R2[i]}</td><td>${d}</td><td>${d*d}</td></tr>`;
+    });
+
+    html+=`<tr style="font-weight:bold">
+    <td>Total</td><td>-</td><td>-</td><td>-</td><td>${sum}</td></tr></tbody>`;
+
+    document.getElementById("calcTable").innerHTML=html;
+
+    let rho=(1-(6*sum)/(n*(n*n-1))).toFixed(3);
+
+    document.getElementById("steps").innerHTML=
+    `ρ = 1 − (6 × ${sum}) / [ ${n}(${n}² − 1) ] = <b>${rho}</b>`;
+
+    conclusion(`Strong focus between Rank-1 & Rank-2`,rho);
+}
+
+/* THREE RANK MODE */
+function calcThree(a,b,c){
+    let R1=rank(a),R2=rank(b),R3=rank(c);
+    let n=R1.length,s12=0,s23=0,s13=0;
+
+    let html=`<thead><tr>
+    <th>Obs</th><th>R1</th><th>R2</th><th>R3</th>
+    <th>d12²</th><th>d23²</th><th>d13²</th>
+    </tr></thead><tbody>`;
+
+    for(let i=0;i<n;i++){
+        let d12=(R1[i]-R2[i])**2;
+        let d23=(R2[i]-R3[i])**2;
+        let d13=(R1[i]-R3[i])**2;
+        s12+=d12; s23+=d23; s13+=d13;
+
+        html+=`<tr>
+        <td>${i+1}</td><td>${R1[i]}</td><td>${R2[i]}</td><td>${R3[i]}</td>
+        <td>${d12}</td><td>${d23}</td><td>${d13}</td></tr>`;
+    }
+
+    html+=`<tr style="font-weight:bold">
+    <td>Total</td><td>-</td><td>-</td><td>-</td>
+    <td>${s12}</td><td>${s23}</td><td>${s13}</td></tr></tbody>`;
+
+    document.getElementById("calcTable").innerHTML=html;
+
+    let rho12=(1-(6*s12)/(n*(n*n-1))).toFixed(3);
+    let rho23=(1-(6*s23)/(n*(n*n-1))).toFixed(3);
+    let rho13=(1-(6*s13)/(n*(n*n-1))).toFixed(3);
+
+    document.getElementById("steps").innerHTML=
+    `<b>Correlations:</b><br>
+    R1–R2: ${rho12}<br>
+    R2–R3: ${rho23}<br>
+    R1–R3: ${rho13}`;
+
+    document.getElementById("conclusion").innerHTML=
+    `<b>Decision Insight:</b><br>
+    Strongest alignment exists where ρ is highest.<br>
+    Managers should prioritize variables with stronger rank association.`;
+}
+
+/* CONCLUSION */
+function conclusion(text,rho){
+    document.getElementById("conclusion").innerHTML=
+    `<b>Fact:</b> ${text}<br><b>ρ:</b> ${rho}<br>
+    <b>Decision:</b> Allocate resources based on strength of association.`;
+}
+</script>
+
+</body>
+</html>
