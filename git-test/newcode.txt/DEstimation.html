@@ -17,14 +17,38 @@
 
 <h2>📊 Demand Estimation – Decision Assistant</h2>
 
+<!-- DEFINITION + PURPOSE -->
 <div class="info">
-<b>Demand Estimation</b> estimates how quantity demanded responds to price.
 
-<br><br>
-<b>Demand Function:</b><br>
-Q = a + bP
+<b>📌 What is Demand Estimation?</b><br>
+Demand Estimation helps businesses understand how customer demand changes
+when price changes. This tool converts raw price–quantity data into
+clear business decisions.
+
+<ul>
+<li>Should we reduce price to increase sales?</li>
+<li>Will a price increase improve revenue?</li>
+<li>Is demand sensitive or stable?</li>
+</ul>
+
+<b>📐 Models Used in This Tool:</b>
+
+<div class="formula-box">
+<b>1. Linear Demand Function</b><br>
+Q = a + bP<br><br>
+Where:<br>
+a = Base demand (intercept)<br>
+b = Price sensitivity (slope)
 </div>
 
+<div class="formula-box">
+<b>2. Price Elasticity of Demand</b><br>
+E = (ΔQ / ΔP) × (P / Q)
+</div>
+
+</div>
+
+<!-- INPUT -->
 <h3>Input Data (Price – Quantity)</h3>
 
 <table id="inputTable">
@@ -47,6 +71,7 @@ Q = a + bP
 <button class="btn-add" onclick="addRow()">➕ Add Observation</button>
 <button class="btn-calc" onclick="calculate()">📈 Estimate Demand</button>
 
+<!-- CALCULATION TABLE -->
 <h3>Calculation Table</h3>
 <table id="calcTable">
 <thead>
@@ -68,8 +93,10 @@ Q = a + bP
 </tfoot>
 </table>
 
+<!-- CHART -->
 <canvas id="demandChart" height="300"></canvas>
 
+<!-- RESULT -->
 <div class="result" id="result"></div>
 
 </div>
