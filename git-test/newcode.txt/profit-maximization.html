@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profit Maximization – Decision Assistant</title>
+
+<link rel="stylesheet" href="PMstyle.css">
+
+</head>
+<body>
+
+<div class="container">
+
+<h2>💰 Profit Maximization – Decision Assistant</h2>
+
+<!-- DEFINITION BOX -->
+<div class="info definition-box">
+<b>📌 Meaning of Profit Maximization</b><br><br>
+
+Profit Maximization is a fundamental business objective where a firm aims to earn the
+highest possible profit from its operations.  
+It helps managers decide the most efficient level of production.  
+Producing too little may waste opportunities, while producing too much may increase costs.  
+Profit depends on the relationship between revenue and cost.  
+Revenue comes from selling products, while cost arises from production.  
+The goal is not maximum sales, but maximum profit.  
+Profit maximization helps avoid unnecessary expenses.  
+It supports long-term sustainability of the business.  
+It guides pricing and output decisions.  
+This concept is widely used in managerial economics and decision-making.
+
+</div>
+
+<!-- SERVICE BOX -->
+<div class="info service-box">
+<b>🛠️ How This Project Helps You</b>
+<ul>
+<li>Automatically calculates revenue, cost, and profit</li>
+<li>Identifies the output level that maximizes profit</li>
+<li>Provides clear managerial decisions, not just numbers</li>
+<li>Visualizes profit behavior using charts</li>
+<li>Helps avoid over-production or under-production</li>
+</ul>
+</div>
+
+<!-- FORMULA BOX -->
+<div class="info formula-box">
+<b>📐 Core Formulas Used</b><br><br>
+
+<b>Total Revenue (TR)</b><br>
+TR = Price × Quantity<br><br>
+
+<b>Total Cost (TC)</b><br>
+TC = Fixed Cost + Variable Cost<br><br>
+
+<b>Profit (π)</b><br>
+π = Total Revenue − Total Cost<br><br>
+
+<b>Profit Maximization Rule</b><br>
+Maximum profit occurs where profit (π) is highest.
+
+</div>
+
+<!-- INPUT TABLE -->
+<h3>Input Data</h3>
+
+<div class="input-section">
+
+<label><b>Fixed Cost:</b></label>
+<input type="number" id="fixedCost" placeholder="Enter Fixed Cost">
+
+<table id="inputTable">
+<thead>
+<tr>
+<th>Quantity (Q)</th>
+<th>Price (P)</th>
+<th>Variable Cost (VC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input type="number" class="qty"></td>
+<td><input type="number" class="price"></td>
+<td><input type="number" class="vc"></td>
+</tr>
+</tbody>
+</table>
+
+<button class="btn-add" onclick="addRow()">➕ Add Observation</button>
+<button class="btn-calc"  onclick="calculateProfit()">📊 Calculate Profit</button>
+
+</div>
+
+</div>
+<script src="PMscript.js"></script>
+</body>
+</html>
