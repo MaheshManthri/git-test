@@ -3,91 +3,71 @@ body{
     background:#f2f6fb;
     padding:20px;
 }
-
 .container{
     max-width:1100px;
-    background:#ffffff;
     margin:auto;
+    background:#fff;
     padding:20px;
     border-radius:8px;
 }
-
 h2,h3{
     color:#2c3e50;
 }
-
-/* COMMON INFO BOX */
 .info{
     padding:15px;
-    border-radius:6px;
     margin-bottom:20px;
+    border-left:5px solid;
 }
+.definition{background:#eaf3ff;border-color:#3498db;}
+.service{background:#f6fff9;border-color:#2ecc71;}
+.formula{background:#fff6e5;border-color:#f39c12;}
 
-/* DEFINITION */
-.definition-box{
-    background:#eaf3ff;
-    border-left:5px solid #3498db;
-}
-
-/* SERVICE */
-.service-box{
-    background:#f6fff9;
-    border-left:5px solid #2ecc71;
-}
-
-/* FORMULA */
-.formula-box{
-    background:#fff6ec;
-    border-left:5px solid #f39c12;
-}
-
-/* TABLE */
 table{
     width:100%;
     border-collapse:collapse;
     margin-top:10px;
 }
-
 th,td{
     border:1px solid #ccc;
     padding:8px;
     text-align:center;
 }
-
-th{
-    background:#f0f4f8;
-}
-
+th{background:#f0f4f8;}
 input{
     width:90%;
     padding:6px;
 }
 
-/* BUTTONS */
 button{
     padding:8px 16px;
     border:none;
     border-radius:5px;
-    font-weight:bold;
     cursor:pointer;
+    font-weight:bold;
     margin-top:10px;
 }
-
 .btn-add{
     background:#d6ecff;
-    color:#004a75;
 }
-
 .btn-calc{
     background:#b3dcff;
-    color:#003a5c;
 }
 
-button:hover{
-    opacity:0.9;
+canvas{
+    border:2px solid #ccc;
+    margin-top:20px;
 }
 
-/* INPUT SECTION */
-.input-section{
+.max-profit{
+    background:#ffd6e7; /* pink */
+}
+.worst-profit{
+    background:#e6b8a2; /* brown */
+}
+
+.result{
+    background:#f6fff9;
+    padding:15px;
+    border-left:5px solid #2ecc71;
     margin-top:20px;
 }
