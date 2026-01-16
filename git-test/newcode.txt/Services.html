@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Services | Business Analytics</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, sans-serif;
+            background:#f4f6f8;
+        }
+
+        /* HEADER */
+        header{
+            background:#0b3c5d;
+            color:#fff;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+        header .logo{
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            margin-left:20px;
+            font-size:16px;
+        }
+
+        nav a:hover{
+            text-decoration:underline;
+        }
+
+        /* PAGE TITLE */
+        .page-title{
+            text-align:center;
+            padding:40px 20px;
+        }
+
+        .page-title h1{
+            color:#0b3c5d;
+            margin-bottom:10px;
+        }
+
+        .page-title p{
+            font-size:18px;
+            max-width:900px;
+            margin:auto;
+            color:#333;
+        }
+
+        /* SERVICE CONTAINER */
+        .services-container{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:30px;
+            padding:40px 60px;
+        }
+
+        /* SERVICE BOX */
+        .service-box{
+            background:white;
+            padding:30px;
+            border-radius:16px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+        }
+
+        .service-box h2{
+            color:#0b3c5d;
+            border-bottom:3px solid #0b3c5d;
+            padding-bottom:10px;
+            margin-bottom:20px;
+        }
+
+        .service{
+            margin-bottom:25px;
+        }
+
+        .service h3{
+            margin-bottom:8px;
+            color:#2c3e50;
+        }
+
+        .service p{
+            color:#444;
+            line-height:1.6;
+        }
+
+        /* DIFFERENT COLORS */
+        .statistics{
+            border-left:8px solid #3498db;
+            background:#eef6ff;
+        }
+
+        .economics{
+            border-left:8px solid #f39c12;
+            background:#fff3e0;
+        }
+
+        /* FOOTER */
+        footer{
+            background:#0b3c5d;
+            color:white;
+            text-align:center;
+            padding:15px;
+            margin-top:40px;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px){
+            .services-container{
+                grid-template-columns:1fr;
+                padding:20px;
+            }
+        }
+<style>
+    /* ---- YOUR EXISTING CSS ---- */
+    body { ... }
+    header { ... }
+    footer { ... }
+
+    /* ============================
+       NEW SERVICES PAGE CSS
+       ============================ */
+
+    .section{
+        padding:50px 60px;
+        text-align:center;
+    }
+
+    .section.light{
+        background:#eef6ff;
+    }
+
+    .section h2{
+        color:#0b3c5d;
+        margin-bottom:30px;
+    }
+
+    .features{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+        gap:20px;
+    }
+
+    .feature-box{
+        background:white;
+        padding:20px;
+        border-radius:14px;
+        font-size:17px;
+        box-shadow:0 6px 15px rgba(0,0,0,0.08);
+    }
+
+    .users{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+        gap:15px;
+    }
+
+    .user-box{
+        background:#fff;
+        padding:15px;
+        border-radius:12px;
+        font-weight:bold;
+    }
+
+    .why-list{
+        max-width:700px;
+        margin:auto;
+        text-align:left;
+        font-size:17px;
+    }
+
+    .why-list li{
+        margin-bottom:12px;
+    }
+
+    .cta{
+        background:#0b3c5d;
+        color:white;
+        text-align:center;
+        padding:50px 20px;
+    }
+
+    .cta-btn{
+        display:inline-block;
+        margin:15px;
+        padding:12px 28px;
+        background:#ffcc00;
+        color:#000;
+        text-decoration:none;
+        border-radius:30px;
+        font-weight:bold;
+    }
+
+    .cta-btn.secondary{
+        background:#fff;
+    }
+
+    .cta-btn:hover{
+        opacity:0.9;
+    }
+
+
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Business Analytics & Decision Support System</div>
+    <nav>
+        <a href="Mainpage-1.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="#">Modules</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="page-title">
+    <h1>Our Services</h1>
+    <p>
+        We provide analytical and economic decision-support services that transform raw data
+        into meaningful insights for better managerial and business decisions.
+    </p>
+</div>
+
+<div class="services-container">
+
+    <!-- STATISTICS -->
+    <div class="service-box statistics">
+        <h2>📊 Statistics Services</h2>
+
+        <div class="service">
+            <h3>Regression Analysis</h3>
+            <p>
+                Analyzes the relationship between dependent and independent variables.
+                Helps predict future outcomes such as sales, demand, or cost trends
+                using historical data.
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Hypothesis Testing</h3>
+            <p>
+                Tests assumptions using statistical methods to determine whether
+                business decisions or changes produce significant results.
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Correlation Analysis</h3>
+            <p>
+                Measures the strength and direction of the relationship between variables.
+                Helps understand data behavior before deeper analysis.
+            </p>
+        </div>
+    </div>
+
+    <!-- ECONOMICS -->
+    <div class="service-box economics">
+        <h2>📈 Economics Services</h2>
+
+        <div class="service">
+            <h3>Demand Estimation</h3>
+            <p>
+                Estimates how quantity demanded responds to price changes.
+                Helps firms make effective pricing and production decisions.
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Profit Maximization</h3>
+            <p>
+                Identifies the output level where profit is highest by analyzing
+                revenue and cost behavior, supported with graphical visualization.
+            </p>
+        </div>
+
+        <div class="service">
+            <h3>Cost Behaviour Analysis</h3>
+            <p>
+                Studies fixed, variable, and total costs to understand how costs
+                change with output, supporting planning and cost control decisions.
+            </p>
+        </div>
+    </div>
+
+</div>
+<section class="section light">
+    <h2>🧠 Intelligent Features</h2>
+
+    <div class="features">
+        <div class="feature-box">
+            📊 Automatic calculations with zero manual effort
+        </div>
+        <div class="feature-box">
+            📈 Graphical visualization for better understanding
+        </div>
+        <div class="feature-box">
+            💡 Smart business decisions & recommendations
+        </div>
+        <div class="feature-box">
+            ⚙️ Real-time input-based analysis
+        </div>
+        <div class="feature-box">
+            🎯 Optimal output, price & profit identification
+        </div>
+    </div>
+</section><br>
+<section class="section light">
+    <h2>⭐ Why Choose Us</h2>
+
+    <ul class="why-list">
+        <li>✔ Combines theory with real-world application</li>
+        <li>✔ Easy-to-use interface for non-technical users</li>
+        <li>✔ Accurate, fast & reliable results</li>
+        <li>✔ Visual + decision-based output (not just numbers)</li>
+        <li>✔ Designed specifically for academic & business use</li>
+    </ul>
+</section>
+<section class="cta">
+    <h2>🚀 Ready to Make Smarter Decisions?</h2>
+    <p>Start analyzing your business data today with our intelligent tools.</p>
+
+    <a href="statistics.html" class="cta-btn">Explore Statistics</a>
+    <a href="economics.html" class="cta-btn secondary">Explore Economics</a>
+</section>
+
+
+
+<footer>
+    © 2026 Business Analytics Project | All Rights Reserved
+</footer>
+
+</body>
+</html>

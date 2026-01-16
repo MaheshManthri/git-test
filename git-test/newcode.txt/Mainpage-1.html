@@ -11,8 +11,11 @@
             background-color: #f4f6f8;
         }
 
-        /* HEADER */
+        /* ================= HEADER (STICKY NAV) ================= */
         header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             background-color: #0b3c5d;
             color: white;
             padding: 15px 30px;
@@ -37,7 +40,19 @@
             text-decoration: underline;
         }
 
-        /* MAIN INTRO */
+        /* ================= HERO IMAGE ================= */
+  .hero {
+    width: 100%;
+}
+
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+        /* ================= MAIN INTRO ================= */
         .main {
             padding: 40px 30px;
             text-align: center;
@@ -51,31 +66,33 @@
             font-size: 18px;
             max-width: 800px;
             margin: auto;
+            color: #333;
         }
 
-        /* BOX CONTAINER */
+        /* ================= BOX CONTAINER ================= */
         .box-container {
             display: grid;
             grid-template-columns: 2fr 2fr;
-            gap: 10px;
-            padding: 100px;
+            gap: 20px;
+            padding: 80px;
         }
 
         .box {
             position: relative;
-            padding: 100px;
+            padding: 60px;
             border-radius: 16px;
-            font-size: 18px;
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         /* BOX COLORS */
         .box1 {
-            background-color: #cce5ff; /* Light Blue */
+            background-color: #cce5ff;
             grid-row: span 2;
         }
 
         .box2 {
-            background-color: #e6c7a1; /* Light Brown */
+            background-color: #e6c7a1;
         }
 
         .box3 {
@@ -83,77 +100,147 @@
             color: white;
         }
 
-        /* ARROW LINK */
-/* Fancy arrow without glow */
-.arrow {
-    position: absolute;
-    bottom: 10px;
-    right: 15px;
-    font-size: 60px;          /* arrow size - increase if needed */
-    color: #FFF5B8;           /* arrow color */
-    text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease;
-}
+        /* ================= ARROW LINK ================= */
+        .arrow {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            font-size: 60px;
+            color: #fff5b8;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
 
-/* Hover animation */
-.arrow:hover {
-    transform: scale(1.3) translateY(-5px) rotate(10deg); /* grows, moves up, rotates slightly */
-    color: #ffcc00;          /* change color on hover */
-}
-sssss        /* FOOTER */
+        .arrow:hover {
+            transform: scale(1.3) translateY(-5px) rotate(10deg);
+            color: #ffcc00;
+        }
+
+        /* ================= FOOTER ================= */
         footer {
             background-color: #0b3c5d;
             color: white;
             text-align: center;
-            padding: 12px;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 900px) {
+            .box-container {
+                grid-template-columns: 1fr;
+                padding: 40px;
+            }
         }
     </style>
 </head>
 
 <body>
 
+<!-- ================= HEADER ================= -->
 <header>
     <div class="logo">Business Analytics & Decision Support System</div>
     <nav>
-        <a href="#">Home</a>
+        <a href="Mainpage-1.html">Home</a>
         <a href="#">About</a>
-        <a href="#">Services</a>
+        <a href="Services.html">Services</a>
         <a href="#">Products</a>
         <a href="#">Contact Us</a>
     </nav>
 </header>
 
+<!-- ================= HERO IMAGE ================= -->
+<div class="hero">
+    <img src="C:\Users\ADMIN\git-test/images/AI-powered-decision-support-systems.PNG" alt="AI Decision Support">
+</div>
+
+
+
+<!-- ================= INTRO ================= -->
 <div class="main">
     <h1>Welcome</h1>
     <p>
-        This platform supports data-driven business decisions
-        using analytical and statistical techniques.
+       <b> This platform supports data-driven business decisions
+        using analytical, statistical, and optimization techniques
+        combined with modern decision support systems.</b>
     </p>
-</div>
+<br><br><br><br>
+    <p><b>
+     “Our innovation transforms economic and statistical data into clear, visual, and actionable business decisions, enabling users to maximize profit, reduce risk, and make smarter decisions without expert knowledge.”</b>
+</p>
+<div class="hero">
+    <img src="C:\Users\ADMIN\git-test/images/decision-making.webp" alt="Decision-Making">
 
-<!-- BOX STRUCTURE -->
+
+</div>
+ <p><h1><b>🌟 Benefits of Our Innovation to Users</p><br></b></h1>
+<p><b>1️⃣ Simplifies Complex Business Decisions</b></p><br>
+
+<p>Most users struggle to apply economic and statistical formulas in real life.
+Your system automatically converts raw data into decisions.</p>
+
+  <p>✅ No manual calculations</p>
+<p>✅No formula confusion   </p>
+  <p>✅ No trial-and-error thinking</p><br>
+
+User benefit: Faster and smarter decisions with zero technical stress.
+
+<br><br>
+
+<p><b>2️⃣ Real-Time Profit Optimization</p></b><br>
+
+<p>Users can instantly:</p>
+
+<p>Enter quantity, price, cost</p>
+
+<p>See profit values</p>
+
+<p>Identify maximum profit output</p>
+
+<p>Visualize the profit curve</p>
+<br><br>
+<p><b>📈 This helps users:</b></p>
+<br><br>
+<p>⇏ Avoid loss-making production</p>
+
+<p>⇥ Focus on the most profitable output level</p>
+
+<p>⇻ User benefit: Increased profitability and cost control.</p>
+
+<!-- ================= BOX STRUCTURE ================= -->
 <div class="box-container">
 
     <div class="box box1">
-        <strong>Box - 1</strong><br><br>
-        Statistics
+        <strong>Statistics</strong><br><br>
+        Descriptive statistics, probability, distributions,
+        hypothesis testing, and analytical foundations.
         <a href="statistics.html" class="arrow">→</a>
     </div>
 
     <div class="box box2">
-        <strong>Box - 2</strong><br><br>
-        Managerial Economics
+        <strong>Managerial Economics</strong><br><br>
+        Demand analysis, cost concepts, production, profit
+        maximization, and break-even analysis.
         <a href="economics.html" class="arrow">→</a>
     </div>
 
     <div class="box box3">
-        <strong>Box - 3</strong><br><br>
-        Decision Models
+        <strong>Decision Models</strong><br><br>
+        Optimization models, profit analysis, forecasting,
+        and intelligent business decisions.
         <a href="decision.html" class="arrow">→</a>
     </div>
 
 </div>
-
+<br>
+<p><b>❁ Visual Learning Through Graphs & Highlights</p></b>
+<p><b>❁ Saves Time & Reduces Human Error</p></b>
+<p><b>❁ Beginner-Friendly (No Expert Knowledge Needed)</p></b>
+<p><b>❁ Practical Application of Theory</p></b>
+<p><b>❁ Supports Strategic & Managerial Planning</p></b>
+<p><b>❁ Reduces Loss & Risk</p></b>
+<br><br>
+<!-- ================= FOOTER ================= -->
 <footer>
     © 2026 Business Analytics Project | All Rights Reserved
 </footer>
