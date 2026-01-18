@@ -7,22 +7,90 @@
 <style>
 body{
     font-family: Arial, sans-serif;
-    background:#f2f6fb;
+    background:#f0f3f7;
     padding:20px;
+    color:#333;
 }
 .container{
-    background:#fff;
-    padding:20px;
-    border-radius:8px;
     max-width:1200px;
     margin:auto;
 }
-.info{
-    background:#eaf3ff;
-    padding:15px;
-    border-left:5px solid #3498db;
+
+/* Info sections */
+.info-section{
+    background:#fff;
+    padding:20px;
     margin-bottom:20px;
+    border-left:6px solid #3498db;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeIn 0.8s ease forwards;
+    margin-top:10px;
 }
+.info-section:nth-child(1){animation-delay:0.1s;}
+.info-section:nth-child(2){animation-delay:0.2s;}
+.info-section:nth-child(3){animation-delay:0.3s;}
+.info-section:nth-child(4){animation-delay:0.4s;}
+.info-section:nth-child(5){animation-delay:0.5s;}
+.info-section:nth-child(6){animation-delay:0.6s;}
+
+@keyframes fadeIn{
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Icons and headings */
+.info-section h2{
+    font-size:1.3em;
+    margin-bottom:10px;
+}
+.info-section ul, .info-section ol{
+    margin-left:20px;
+}
+
+/* Flow boxes */
+.flow-box{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+}
+.flow-step{
+    background:#d6f0ff;
+    color:#0366a6;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    transition:transform 0.2s;
+}
+.flow-step:hover{
+    transform:translateY(-3px);
+}
+.flow-arrow{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Calculation box */
+.calc-container{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #b3dcff;
+    margin-bottom:20px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.08);
+}
+.calc-container h3{
+    color:#0366a6;
+}
+
+/* Tables */
 table{
     width:100%;
     border-collapse:collapse;
@@ -34,38 +102,58 @@ th,td{
     text-align:center;
 }
 th{
-    background:#f0f4f8;
+    background:#e6f2ff;
 }
+
+/* Inputs */
 input{
     width:90%;
     padding:6px;
 }
+
+/* Buttons */
 button{
     padding:8px 16px;
     border:none;
     border-radius:6px;
     font-weight:bold;
     cursor:pointer;
+    transition:transform 0.2s, background 0.2s;
+}
+button:hover{
+    transform:translateY(-2px);
 }
 .btn-calc{
-    background:#b3dcff;
+    background:#3498db;
+    color:#fff;
     margin-top:10px;
 }
 #addRankBtn{
-    background:#d6ecff;
+    background:#5dade2;
+    color:#fff;
     font-size:18px;
 }
+
+/* Steps & Conclusion */
+.calcSteps{
+    background:#f0f8ff;
+    padding:15px;
+    margin-top:15px;
+    border-left:6px solid #3498db;
+    border-radius:6px;
+}
 .conclusion{
-    background:#f6fff9;
+    background:#e8fff2;
     padding:15px;
     margin-top:20px;
-    border-left:5px solid #2ecc71;
+    border-left:6px solid #2ecc71;
+    border-radius:6px;
+    font-weight:bold;
 }
-.calcSteps{
-    background:#fff;
-    padding:12px;
-    margin-top:15px;
-    border-left:5px solid #3498db;
+
+/* Highlight formulas */
+.info b{
+    color:#0366a6;
 }
 </style>
 </head>
@@ -74,13 +162,49 @@ button{
 
 <div class="container">
 
+<!-- Purpose & Modules -->
+<section class="info-section">
+    <h2>📌 Purpose & Modules</h2>
+    <p>This tool serves as a <strong>Spearman Rank Correlation Decision Assistant</strong> for evaluating the strength of relationships between ranked variables.</p>
+    <ul>
+        <li>💻 <b>Input Module:</b> Enter multiple ranks and optionally add a third variable for three-way correlation analysis.</li>
+        <li>🧮 <b>Calculation Module:</b> Automatically ranks data, computes d², and calculates correlation coefficients.</li>
+        <li>📊 <b>Decision Module:</b> Provides interpretation and actionable decision insights based on correlation strength.</li>
+    </ul>
+</section>
+
+<!-- How Users Utilize -->
+<section class="info-section">
+    <h2>⚙️ How Users Utilize the Service</h2>
+    <ol>
+        <li>Enter ranked observations in the input table.</li>
+        <li>Optionally click ➕ to add a third rank for three-variable analysis.</li>
+        <li>Press <b>📊 Calculate Correlation</b> to generate correlation values and calculation tables.</li>
+        <li>View step-by-step calculations and actionable decision insights below.</li>
+    </ol>
+</section>
+
+<!-- Advantages -->
+<section class="info-section">
+    <h2>⭐ Advantages to Users</h2>
+    <ul>
+        <li>Automatically calculates Spearman rank correlation without manual computation.</li>
+        <li>Supports two or three variable correlation analysis.</li>
+        <li>Provides clear visual tables for observation, d², and totals.</li>
+        <li>Generates decision support insights for business, research, or academic purposes.</li>
+        <li>User-friendly interface, works without additional statistical software.</li>
+    </ul>
+</section>
+
+<!-- Calculation Box -->
+<div class="calc-container">
+
 <div class="info">
 <b>Spearman Rank Correlation</b> measures relationship strength using ranks.<br><br>
 <b>Formula:</b> ρ = 1 − (6 Σ d²) / [ n ( n² − 1 ) ]
 </div>
 
 <h3>Input Data</h3>
-
 <table id="inputTable">
 <thead>
 <tr>
@@ -110,8 +234,40 @@ button{
 <div class="calcSteps" id="steps"></div>
 
 <div class="conclusion" id="conclusion"></div>
+</div> <!-- End calc-container -->
 
-</div>
+<!-- Flow of Information -->
+<section class="info-section">
+    <h2>🔄 Flow of Information</h2>
+    <div class="flow-box">
+        <div class="flow-step">📥 User Enters Data</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">🧮 System Ranks & Computes d²</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">📊 Correlation Coefficient & Insight</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">📝 Decision Support Output</div>
+    </div>
+    <p>The system collects user inputs, automatically performs ranking calculations, computes Spearman's ρ, and provides actionable insights.</p>
+</section>
+
+<!-- Assumptions -->
+<section class="info-section">
+    <h2>📌 Statistical Assumptions</h2>
+    <ul>
+        <li>Observations are independent.</li>
+        <li>Variables are at least ordinal (rankable).</li>
+        <li>Monotonic relationship exists between variables.</li>
+    </ul>
+</section>
+
+<!-- Decision Support -->
+<section class="info-section">
+    <h2>🧠 Decision Support Insight</h2>
+    <p>The correlation values guide decision-making. Stronger ρ indicates higher association between variables. Managers/researchers should prioritize actions for variables with stronger rank alignment.</p>
+</section>
+
+</div> <!-- End container -->
 
 <script>
 let hasRank3=false;

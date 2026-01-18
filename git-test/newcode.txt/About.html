@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>About Us – Business Analytics & Decision Support System</title>
 
+<!-- ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 <style>
 /* -------- GLOBAL -------- */
 body{
@@ -12,6 +15,12 @@ body{
     background:#f4f7fb;
     color:#2c3e50;
     line-height:1.7;
+    animation:fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
 }
 
 /* -------- NAVBAR -------- */
@@ -34,10 +43,23 @@ body{
     text-decoration:none;
     margin-left:25px;
     font-size:16px;
+    position:relative;
+    transition:0.3s;
 }
 
-.navbar nav a:hover{
-    text-decoration:underline;
+.navbar nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    background:#fff;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.navbar nav a:hover::after{
+    width:100%;
 }
 
 /* -------- HEADER -------- */
@@ -46,6 +68,12 @@ body{
     color:#fff;
     padding:60px 20px;
     text-align:center;
+    animation:slideDown 1s ease;
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-30px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
 }
 
 .header h1{
@@ -72,6 +100,18 @@ body{
     margin-top:30px;
     border-radius:14px;
     box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    transition:0.4s;
+    animation:fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.section:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
 }
 
 .section h2{
@@ -94,6 +134,11 @@ body{
     padding:20px;
     border-radius:12px;
     border-left:5px solid #3498db;
+    transition:0.4s;
+}
+
+.box:hover{
+    transform:scale(1.05);
 }
 
 .box strong{
@@ -126,9 +171,14 @@ li{
     min-width:180px;
     font-weight:bold;
     color:#fff;
+    transition:0.4s;
 }
 
-/* Custom colors as requested */
+.flow div:hover{
+    transform:translateY(-8px) scale(1.05);
+}
+
+/* Custom colors */
 .step-input{ background:#C2A093; }
 .step-analyze{ background:#7EADA9; }
 .step-visualize{ background:#756986; }
@@ -147,6 +197,7 @@ li{
     text-align:center;
     padding:15px;
     margin-top:50px;
+    animation:fadeIn 1.5s;
 }
 </style>
 </head>
@@ -155,11 +206,11 @@ li{
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <div class="logo">Decision Support System</div>
+    <div class="logo"><i class="fa-solid fa-chart-line"></i> Decision Support System</div>
     <nav>
-        <a href="Mainpage-1.html">Home</a>
-        <a href="services.html">Services</a>
-        <a href="Contact.html">Contact Us</a>
+        <a href="Mainpage-1.html"><i class="fa fa-house"></i> Home</a>
+        <a href="services.html"><i class="fa fa-briefcase"></i> Services</a>
+        <a href="Contact.html"><i class="fa fa-envelope"></i> Contact Us</a>
     </nav>
 </div>
 
@@ -171,16 +222,14 @@ li{
 
 <div class="container">
 
-<!-- PROJECT OVERVIEW -->
 <div class="section">
     <h2>Project Overview</h2>
     <p>
-        The <b>Business Analytics & Decision Support System</b> is an innovative web-based platform
+        <b>Business Analytics & Decision Support System</b> is an innovative web-based platform
         designed to help users analyze business data and convert it into meaningful decisions.
     </p>
 </div>
 
-<!-- PROBLEM -->
 <div class="section">
     <h2>Problem We Address</h2>
     <ul>
@@ -191,7 +240,6 @@ li{
     </ul>
 </div>
 
-<!-- SOLUTION -->
 <div class="section">
     <h2>Our Solution</h2>
     <p>
@@ -200,18 +248,17 @@ li{
     </p>
 </div>
 
-<!-- MODULES -->
 <div class="section">
     <h2>Modules Covered</h2>
     <div class="grid">
         <div class="box">
-            <strong>📊 Statistics</strong>
+            <strong><i class="fa fa-chart-pie"></i> Statistics</strong>
             Regression Analysis<br>
             Correlation Analysis<br>
             Hypothesis Testing
         </div>
         <div class="box">
-            <strong>📈 Managerial Economics</strong>
+            <strong><i class="fa fa-coins"></i> Managerial Economics</strong>
             Demand Estimation<br>
             Profit Maximization<br>
             Cost Behaviour<br>
@@ -220,18 +267,16 @@ li{
     </div>
 </div>
 
-<!-- HOW IT WORKS -->
 <div class="section">
     <h2>How It Works</h2>
     <div class="flow">
-        <div class="step-input">1️⃣ Input Data</div>
-        <div class="step-analyze">2️⃣ Analyze</div>
-        <div class="step-visualize">3️⃣ Visualize</div>
-        <div class="step-decide">4️⃣ Decide</div>
+        <div class="step-input"><i class="fa fa-database"></i><br>Input Data</div>
+        <div class="step-analyze"><i class="fa fa-magnifying-glass-chart"></i><br>Analyze</div>
+        <div class="step-visualize"><i class="fa fa-chart-column"></i><br>Visualize</div>
+        <div class="step-decide"><i class="fa fa-lightbulb"></i><br>Decide</div>
     </div>
 </div>
 
-<!-- TARGET USERS -->
 <div class="section">
     <h2>Target Users</h2>
     <ul>
@@ -241,7 +286,6 @@ li{
     </ul>
 </div>
 
-<!-- BENEFITS -->
 <div class="section">
     <h2>Key Benefits</h2>
     <ul>
@@ -251,7 +295,6 @@ li{
     </ul>
 </div>
 
-<!-- VISION -->
 <div class="section vision">
     <h2>Vision & Future Scope</h2>
     <p>
@@ -261,7 +304,6 @@ li{
 
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
     © 2026 Business Analytics & Decision Support System | All Rights Reserved
 </div>
