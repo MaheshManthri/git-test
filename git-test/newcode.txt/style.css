@@ -196,3 +196,36 @@ button {
 @keyframes fadeIn {
     to { opacity: 1; }
 }
+.diagram-section {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9fbfc;
+}
+
+.diagram-section h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.diagram-controls {
+    margin-bottom: 15px;
+}
+
+.diagram-controls select {
+    padding: 6px;
+    margin-left: 10px;
+}
+
+.diagram-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.diagram-note {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
