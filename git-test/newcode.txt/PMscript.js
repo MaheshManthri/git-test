@@ -10,8 +10,7 @@ function addRow() {
     tbody.appendChild(row);
 }
 
-/* ENTER KEY FLOW */
-/* ENTER KEY FLOW – ONLY FOR INPUT TABLE */
+/* ENTER KEY FLOW – UNCHANGED */
 document.querySelector("#inputTable tbody").addEventListener("keydown", function (e) {
 
     if (e.key !== "Enter") return;
@@ -27,12 +26,9 @@ document.querySelector("#inputTable tbody").addEventListener("keydown", function
     const inputs = Array.from(row.querySelectorAll("input"));
     const index = inputs.indexOf(active);
 
-    // Q → P → VC
     if (index < inputs.length - 1) {
         inputs[index + 1].focus();
-    }
-    // VC → new row → Q
-    else {
+    } else {
         addRow();
         setTimeout(() => {
             const lastQty = document.querySelector("#inputTable tbody tr:last-child .qty");
@@ -52,7 +48,7 @@ function calculateProfit(){
     tbody.innerHTML = "";
 
     let Q = [], Profit = [];
-    let maxProfit = -Infinity, minProfit = Infinity;
+    let maxProfit = -Infinity;
     let bestRow, worstRow, bestQ;
 
     rows.forEach(r=>{
@@ -65,17 +61,22 @@ function calculateProfit(){
         let TC = fixedCost + (vc * q);
         let profit = TR - TC;
 
+        /* ✅ BREAK-EVEN PRICE ADDED */
+        let breakEvenPrice = TC / q;
+
         let row = tbody.insertRow();
-        row.innerHTML = `<td>${q}</td><td>${TR}</td><td>${TC}</td><td>${profit}</td>`;
+        row.innerHTML = `
+            <td>${q}</td>
+            <td>${TR}</td>
+            <td>${TC}</td>
+            <td>${profit}</td>
+            <td>${breakEvenPrice.toFixed(2)}</td>
+        `;
 
         if(profit > maxProfit){
             maxProfit = profit;
             bestQ = q;
             bestRow = row;
-        }
-        if(profit < minProfit){
-            minProfit = profit;
-            worstRow = row;
         }
 
         Q.push(q);
@@ -83,29 +84,24 @@ function calculateProfit(){
     });
 
     if(bestRow) bestRow.classList.add("max-profit");
-    if(worstRow) worstRow.classList.add("worst-profit");
 
     drawProfitChart(Q, Profit);
 
     document.getElementById("result").innerHTML = `
-    <b>📊 Fact:</b><br>
-    Profit increases up to Quantity = <b>${bestQ}</b> and then declines.<br><br>
+    <b>📊 Profit Result:</b><br>
+    Maximum profit of <b>₹${maxProfit}</b> occurs at Quantity = <b>${bestQ}</b>.<br><br>
 
-    <b>📌 Insight:</b><br>
-    Maximum profit of <b>₹${maxProfit}</b> occurs at this output level.<br><br>
+    <b>💰 Break-Even Price Analysis:</b><br>
+    Break-even price is the minimum price required to cover total cost.<br>
+    If actual price is higher than break-even price → profit is earned.<br>
+    If actual price is lower than break-even price → loss occurs.<br><br>
 
-    <b>💡 Recommendation:</b><br>
-    Produce <b>${bestQ}</b> units to achieve the highest profit.<br><br>
-
-    <b>⚠ Warning:</b><br>
-    Producing beyond this level reduces profitability.<br><br>
-
-    <b>✅ Action:</b><br>
-    Maintain output close to the optimal level.
+    <b>✅ Managerial Decision:</b><br>
+    Fix prices above the break-even level and operate near the optimal output.
     `;
 }
 
-/* PROFIT CURVE */
+/* PROFIT CURVE – UNCHANGED */
 function drawProfitChart(Q, Profit){
     const canvas = document.getElementById("profitChart");
     const ctx = canvas.getContext("2d");

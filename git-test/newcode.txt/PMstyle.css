@@ -16,11 +16,9 @@ h2,h3{
 .info{
     padding:15px;
     margin-bottom:20px;
-    border-left:5px solid;
+    border-left:5px solid #3498db;
+    background:#eaf3ff;
 }
-.definition{background:#eaf3ff;border-color:#3498db;}
-.service{background:#f6fff9;border-color:#2ecc71;}
-.formula{background:#fff6e5;border-color:#f39c12;}
 
 table{
     width:100%;
@@ -32,7 +30,9 @@ th,td{
     padding:8px;
     text-align:center;
 }
-th{background:#f0f4f8;}
+th{
+    background:#f0f4f8;
+}
 input{
     width:90%;
     padding:6px;
@@ -59,10 +59,13 @@ canvas{
 }
 
 .max-profit{
-    background:#ffd6e7; /* pink */
+    background:#ffd6e7;
 }
-.worst-profit{
-    background:#e6b8a2; /* brown */
+.price-profit{
+    background:#e8fff0;   /* profitable price */
+}
+.price-loss{
+    background:#ffecec;   /* loss price */
 }
 
 .result{
