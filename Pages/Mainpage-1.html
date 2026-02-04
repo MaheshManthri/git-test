@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Business Analytics & Decision Support System</title>
+
+<!-- ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ================= GLOBAL ================= */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    scroll-behavior: smooth;
+}
+
+/* ================= HEADER ================= */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #3C5759;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a i {
+    margin-right: 6px;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+/* ================= HERO IMAGE ================= */
+.hero img {
+    width: 100%;
+    display: block;
+    border-radius: 20px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= INTRO ================= */
+.main {
+    padding: 40px 30px;
+    text-align: center;
+    animation: fadeIn 1.5s ease;
+}
+
+.main h1 {
+    color: #0b3c5d;
+    font-size: 38px;
+}
+
+.main p {
+    font-size: 18px;
+    max-width: 850px;
+    margin: 20px auto;
+    color: #333;
+}
+
+/* ================= BOX CONTAINER ================= */
+.box-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    padding:50px 30px;
+}
+
+/* ---------- BOXES (Premium Glass Look + Gradient Glow) ---------- */
+.box{
+    position:relative;
+    min-height:260px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    padding:30px;
+    border-radius:22px;
+
+    font-size:16px;
+    line-height:1.6;
+
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(14px);
+    box-shadow:0 20px 40px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(255,255,255,0.4);
+
+    transition:0.5s ease;
+    overflow:hidden;
+}
+
+.box::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,transparent,rgba(255,255,255,0.3),transparent);
+    opacity:0;
+    transition:0.5s;
+}
+
+.box:hover::before{
+    opacity:1;
+}
+
+.box:hover{
+    transform:translateY(-12px) scale(1.04);
+    box-shadow:0 28px 60px rgba(0,0,0,0.18);
+}
+
+/* ---------- HEADING ---------- */
+.box strong{
+    font-size:22px;
+    color:#0b3c5d;
+    margin-bottom:16px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.box strong i{
+    font-size:24px;
+}
+
+/* ---------- TEXT ---------- */
+.box{
+    color:#34495e;
+}
+
+/* ---------- ARROW BUTTON ---------- */
+.arrow{
+    position:absolute;
+    bottom:22px;
+    right:25px;
+
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:bold;
+    text-decoration:none;
+
+    color:#fff;
+    background:linear-gradient(135deg,#0b3c5d,#3498db);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+    transition:0.4s ease;
+}
+
+.box:hover .arrow{
+    transform:translateX(10px) scale(1.15);
+    box-shadow:0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* ---------- INDIVIDUAL BOX COLORS ---------- */
+.box1{ border-top:6px solid #3498db; }
+.box2{ border-top:6px solid #f39c12; }
+.box3{ border-top:6px solid #9b59b6; }
+
+.box1 .arrow{ background:linear-gradient(135deg,#3498db,#5dade2); }
+.box2 .arrow{ background:linear-gradient(135deg,#f39c12,#f8c471); }
+.box3 .arrow{ background:linear-gradient(135deg,#9b59b6,#c39bd3); }
+
+/* ================= FOOTER ================= */
+footer {
+    background-color: #AC9C8D;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .box-container {
+        grid-template-columns: 1fr;
+        padding: 40px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <div class="logo"><i class="fa-solid fa-chart-line"></i> Business Analytics & DSS</div>
+    <nav>
+        <a href="Mainpage-1.html"><i class="fa fa-house"></i>Home</a>
+        <a href="About.html"><i class="fa fa-circle-info"></i>About</a>
+        <a href="Services.html"><i class="fa fa-briefcase"></i>Services</a>
+        <a href="#"><i class="fa fa-cubes"></i>Products</a>
+        <a href="Contact.html"><i class="fa fa-envelope"></i>Contact</a>
+    </nav>
+</header>
+
+<!-- ================= HERO IMAGE ================= -->
+<div class="hero">
+    <img src="C:\Users\ADMIN\git-test/images/AI-powered-decision-support-systems.PNG" alt="AI Decision Support">
+</div>
+
+<!-- ================= INTRO ================= -->
+<div class="main">
+    <h1>Welcome</h1>
+    <p><b>
+        This platform supports data-driven business decisions
+        using analytical, statistical, and optimization techniques
+        combined with modern decision support systems.
+    </b></p>
+
+    <br><br>
+
+    <p><b>
+        “Our innovation transforms economic and statistical data into clear, visual, and actionable business decisions.”
+    </b></p>
+</div>
+
+<div class="hero">
+    <img src="C:\Users\ADMIN\git-test/images/decision-making.webp" alt="Decision Making">
+</div>
+
+<!-- ================= BOX STRUCTURE ================= -->
+<div class="box-container">
+
+    <div class="box box1">
+        <strong><i class="fa fa-square-root-variable"></i> Statistics</strong><br><br>
+        Descriptive statistics, probability, distributions,
+        hypothesis testing, and analytical foundations.
+        <a href="statistics.html" class="arrow">→</a>
+    </div>
+
+    <div class="box box2">
+        <strong><i class="fa fa-chart-column"></i> Managerial Economics</strong><br><br>
+        Demand analysis, cost concepts, production, profit
+        maximization, and break-even analysis.
+        <a href="economics.html" class="arrow">→</a>
+    </div>
+
+    <div class="box box3">
+        <strong><i class="fa fa-brain"></i> Decision Models</strong><br><br>
+        Optimization models, forecasting,
+        and intelligent business decisions.
+        <a href="decision model.html" class="arrow">→</a>
+    </div>
+
+
+
+</div>
+
+<footer>
+    © 2026 Business Analytics Project | All Rights Reserved
+</footer>
+
+</body>
+</html>

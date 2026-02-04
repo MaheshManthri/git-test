@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Profit Maximization – Decision Assistant</title>
+<link rel="stylesheet" href="../css/PMstyle.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>💰 Profit Maximization – Decision Assistant</h2>
+
+<!-- DEFINITION -->
+<div class="info definition">
+<b>📌 Meaning of Profit Maximization</b><br><br>
+Profit Maximization is the process of determining the output level that generates the
+highest possible profit for a business.
+</div>
+
+<!-- INPUT -->
+<h3>Input Data</h3>
+
+<label><b>Fixed Cost:</b></label>
+<input type="number" id="fixedCost" placeholder="Enter Fixed Cost">
+
+<table id="inputTable">
+<thead>
+<tr>
+<th>Quantity (Q)</th>
+<th>Price (P)</th>
+<th>Variable Cost (VC)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><input type="number" class="qty"></td>
+<td><input type="number" class="price"></td>
+<td><input type="number" class="vc"></td>
+</tr>
+</tbody>
+</table>
+
+<button class="btn-add" onclick="addRow()">➕ Add Observation</button>
+<button class="btn-calc" onclick="calculateProfit()">📊 Calculate Profit</button>
+
+<!-- OUTPUT -->
+<h3>📊 Profit Calculation</h3>
+
+<table id="calcTable">
+<thead>
+<tr>
+<th>Q</th>
+<th>TR</th>
+<th>TC</th>
+<th>Profit</th>
+<th>Break-Even Price</th> <!-- ✅ ADDED -->
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+
+<h3>📈 Profit Curve</h3>
+<canvas id="profitChart" width="700" height="350"></canvas>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script src="../JS/PMscript.js"></script>
+</body>
+</html>

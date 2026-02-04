@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Demand Estimation – Decision Assistant</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/DEstyle.css">
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>📊 Demand Estimation – Decision Assistant</h2>
+
+<!-- DEFINITION + PURPOSE -->
+<div class="info">
+
+<b>📌 What is Demand Estimation?</b><br>
+Demand Estimation helps businesses understand how customer demand changes
+when price changes. This tool converts raw price–quantity data into
+clear business decisions.
+
+<ul>
+<li>Should we reduce price to increase sales?</li>
+<li>Will a price increase improve revenue?</li>
+<li>Is demand sensitive or stable?</li>
+</ul>
+
+<b>📐 Models Used in This Tool:</b>
+
+<div class="formula-box">
+<b>1. Linear Demand Function</b><br>
+Q = a + bP<br><br>
+Where:<br>
+a = Base demand (intercept)<br>
+b = Price sensitivity (slope)
+</div>
+
+<div class="formula-box">
+<b>2. Price Elasticity of Demand</b><br>
+E = (ΔQ / ΔP) × (P / Q)
+</div>
+
+</div>
+
+<!-- INPUT -->
+<h3>Input Data (Price – Quantity)</h3>
+
+<table id="inputTable">
+<thead>
+<tr>
+<th>Obs</th>
+<th>Price (P)</th>
+<th>Quantity (Q)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input type="number" class="price"></td>
+<td><input type="number" class="qty"></td>
+</tr>
+</tbody>
+</table>
+
+<button class="btn-add" onclick="addRow()">➕ Add Observation</button>
+<button class="btn-calc" onclick="calculate()">📈 Estimate Demand</button>
+
+<!-- CALCULATION TABLE -->
+<h3>Calculation Table</h3>
+<table id="calcTable">
+<thead>
+<tr>
+<th>P</th>
+<th>Q</th>
+<th>P²</th>
+<th>PQ</th>
+</tr>
+</thead>
+<tbody></tbody>
+<tfoot>
+<tr>
+<th>ΣP</th>
+<th>ΣQ</th>
+<th>ΣP²</th>
+<th>ΣPQ</th>
+</tr>
+</tfoot>
+</table>
+
+<!-- CHART -->
+<canvas id="demandChart" height="300"></canvas>
+
+<!-- RESULT -->
+<div class="result" id="result"></div>
+
+</div>
+
+<!-- JS -->
+<script src="../JS/DEscript.js"></script>
+</body>
+</html>

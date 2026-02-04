@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Module Business DSS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg,#4e73df,#1cc88a);
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        button {
+            background: #4e73df;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #2e59d9;
+        }
+
+        .meter {
+            height: 25px;
+            background: #ddd;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .fill {
+            height: 100%;
+            width: 0%;
+            border-radius: 12px;
+            transition: 0.5s;
+        }
+
+        .result {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <!-- ================= LOAN DSS ================= -->
+    <div class="card">
+        <h2>🏦 Loan Approval DSS</h2>
+        <div class="info">
+            This module simulates a bank's decision-making process. Using rule-based scoring, it determines loan approval while assessing financial risk.
+        </div>
+
+        <input type="number" id="income" placeholder="Annual Income (₹)">
+        <input type="number" id="credit" placeholder="Credit Score">
+        <input type="number" id="debt" placeholder="Debt (%)">
+        <select id="job">
+            <option value="stable">Stable Job</option>
+            <option value="unstable">Unstable Job</option>
+        </select>
+
+        <button onclick="loanDecision()">Check Loan Eligibility</button>
+
+        <div id="loanResult" class="result"></div>
+        <div class="meter">
+            <div id="meterFill" class="fill"></div>
+        </div>
+    </div>
+
+    <!-- ================= INVENTORY DSS ================= -->
+    <div class="card">
+        <h2>📦 Inventory Decision DSS</h2>
+        <div class="info">
+            This module calculates reorder points to optimize inventory. It ensures stock levels meet demand while minimizing storage costs.
+        </div>
+
+        <input type="number" id="stock" placeholder="Current Stock">
+        <input type="number" id="demand" placeholder="Daily Demand">
+        <input type="number" id="lead" placeholder="Lead Time (days)">
+        <input type="number" id="safety" placeholder="Safety Stock">
+
+        <button onclick="inventoryDecision()">Check Inventory</button>
+
+        <div id="inventoryResult" class="result"></div>
+    </div>
+
+    <!-- ================= EMPLOYEE PERFORMANCE DSS ================= -->
+    <div class="card">
+        <h2>👨‍💼 Employee Performance DSS</h2>
+        <div class="info">
+            This module evaluates employee performance using a weighted scoring system based on KPIs, attendance, and experience.
+        </div>
+
+        <input type="number" id="kpi" placeholder="KPI Score (0-100)">
+        <input type="number" id="attendance" placeholder="Attendance % (0-100)">
+        <input type="number" id="experience" placeholder="Years of Experience">
+
+        <button onclick="employeeDecision()">Evaluate Performance</button>
+
+        <div id="employeeResult" class="result"></div>
+        <div class="meter">
+            <div id="employeeMeter" class="fill"></div>
+        </div>
+    </div>
+
+    <!-- ================= SALES FORECASTING DSS ================= -->
+    <div class="card">
+        <h2>📈 Sales Forecasting DSS</h2>
+        <div class="info">
+            This module predicts future sales based on past monthly sales, seasonal trends, and marketing effort to aid planning decisions.
+        </div>
+
+        <input type="number" id="pastSales" placeholder="Average Past Sales (units)">
+        <input type="number" id="growth" placeholder="Expected Growth %">
+        <input type="number" id="seasonFactor" placeholder="Seasonal Factor (1-2)">
+
+        <button onclick="salesDecision()">Forecast Sales</button>
+
+        <div id="salesResult" class="result"></div>
+    </div>
+
+</div>
+
+<script>
+/* ================= LOAN DSS ================= */
+function loanDecision() {
+    let income = +document.getElementById("income").value;
+    let credit = +document.getElementById("credit").value;
+    let debt = +document.getElementById("debt").value;
+    let job = document.getElementById("job").value;
+
+    let score = 0;
+    if (income >= 50000) score += 4;
+    if (credit >= 750) score += 4;
+    else if (credit >= 650) score += 2;
+    if (debt <= 30) score += 3;
+    if (job === "stable") score += 2;
+
+    let decision, risk, color;
+    if (score >= 8) {
+        decision = "✅ Approved";
+        risk = "Low Risk";
+        color = "green";
+    } else if (score >= 5) {
+        decision = "⚠ Needs Review";
+        risk = "Medium Risk";
+        color = "orange";
+    } else {
+        decision = "❌ Rejected";
+        risk = "High Risk";
+        color = "red";
+    }
+
+    document.getElementById("loanResult").innerHTML =
+        "Decision: " + decision + " | Score: " + score + " | Risk: " + risk;
+
+    let percent = (score / 13) * 100;
+    let meter = document.getElementById("meterFill");
+    meter.style.width = percent + "%";
+    meter.style.backgroundColor = color;
+}
+
+/* ================= INVENTORY DSS ================= */
+function inventoryDecision() {
+    let stock = +document.getElementById("stock").value;
+    let demand = +document.getElementById("demand").value;
+    let lead = +document.getElementById("lead").value;
+    let safety = +document.getElementById("safety").value;
+
+    let reorderPoint = (demand * lead) + safety;
+    let decision = (stock <= reorderPoint) ?
+        "📢 Order Now (Reorder Needed)" :
+        "✅ Stock Sufficient";
+
+    document.getElementById("inventoryResult").innerHTML =
+        "Reorder Point: " + reorderPoint + "<br>Decision: " + decision;
+}
+
+/* ================= EMPLOYEE PERFORMANCE DSS ================= */
+function employeeDecision() {
+    let kpi = +document.getElementById("kpi").value;
+    let attendance = +document.getElementById("attendance").value;
+    let experience = +document.getElementById("experience").value;
+
+    // Weighted score
+    let score = (kpi * 0.5) + (attendance * 0.3) + (experience * 0.2);
+
+    let rating, color;
+    if (score >= 80) {
+        rating = "🌟 Excellent";
+        color = "green";
+    } else if (score >= 60) {
+        rating = "👍 Good";
+        color = "orange";
+    } else {
+        rating = "⚠ Needs Improvement";
+        color = "red";
+    }
+
+    document.getElementById("employeeResult").innerHTML =
+        "Performance Score: " + score.toFixed(1) + " | Rating: " + rating;
+
+    let percent = (score / 100) * 100;
+    let meter = document.getElementById("employeeMeter");
+    meter.style.width = percent + "%";
+    meter.style.backgroundColor = color;
+}
+
+/* ================= SALES FORECASTING DSS ================= */
+function salesDecision() {
+    let pastSales = +document.getElementById("pastSales").value;
+    let growth = +document.getElementById("growth").value;
+    let seasonFactor = +document.getElementById("seasonFactor").value;
+
+    let forecast = pastSales * (1 + growth/100) * seasonFactor;
+
+    document.getElementById("salesResult").innerHTML =
+        "Forecasted Sales: " + forecast.toFixed(0) + " units";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+body{
+    font-family: Arial, sans-serif;
+    background:#f2f6fb;
+    padding:20px;
+}
+
+.container{
+    max-width:1100px;
+    background:#fff;
+    margin:auto;
+    padding:20px;
+    border-radius:8px;
+}
+
+h2,h3{
+    color:#2c3e50;
+}
+
+/* INFO SECTION */
+.info{
+    background:#eaf3ff;
+    padding:15px;
+    border-left:5px solid #3498db;
+    margin-bottom:20px;
+}
+
+.info b{
+    color:#1f4fa3;
+}
+
+.info ul{
+    margin-top:8px;
+    margin-left:20px;
+}
+
+.info ul li{
+    margin-bottom:6px;
+}
+
+/* FORMULA BOX */
+.formula-box{
+    background:#f4f9ff;
+    border:1px dashed #4da3ff;
+    padding:12px;
+    border-radius:6px;
+    margin-top:10px;
+    font-size:15px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+
+th{
+    background:#f0f4f8;
+}
+
+input{
+    width:90%;
+    padding:6px;
+}
+
+/* BUTTONS */
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:5px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.btn-add{
+    background:#d6ecff;
+    color:#004a75;
+}
+
+.btn-calc{
+    background:#b3dcff;
+    color:#003a5c;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+/* RESULT */
+.result{
+    background:#f6fff9;
+    padding:15px;
+    border-left:5px solid #2ecc71;
+    margin-top:20px;
+}
+
+/* CHART */
+canvas{
+    margin-top:30px;
+}

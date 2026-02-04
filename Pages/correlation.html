@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spearman Rank Correlation – Decision Assistant</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f0f3f7;
+    padding:20px;
+    color:#333;
+}
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+/* Info sections */
+.info-section{
+    background:#fff;
+    padding:20px;
+    margin-bottom:20px;
+    border-left:6px solid #3498db;
+    border-radius:8px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    opacity:0;
+    transform:translateY(20px);
+    animation: fadeIn 0.8s ease forwards;
+    margin-top:10px;
+}
+.info-section:nth-child(1){animation-delay:0.1s;}
+.info-section:nth-child(2){animation-delay:0.2s;}
+.info-section:nth-child(3){animation-delay:0.3s;}
+.info-section:nth-child(4){animation-delay:0.4s;}
+.info-section:nth-child(5){animation-delay:0.5s;}
+.info-section:nth-child(6){animation-delay:0.6s;}
+
+@keyframes fadeIn{
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Icons and headings */
+.info-section h2{
+    font-size:1.3em;
+    margin-bottom:10px;
+}
+.info-section ul, .info-section ol{
+    margin-left:20px;
+}
+
+/* Flow boxes */
+.flow-box{
+    display:flex;
+    align-items:center;
+    justify-content:flex-start;
+    flex-wrap:wrap;
+    gap:10px;
+}
+.flow-step{
+    background:#d6f0ff;
+    color:#0366a6;
+    padding:12px 18px;
+    border-radius:8px;
+    font-weight:bold;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 3px 8px rgba(0,0,0,0.1);
+    transition:transform 0.2s;
+}
+.flow-step:hover{
+    transform:translateY(-3px);
+}
+.flow-arrow{
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Calculation box */
+.calc-container{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #b3dcff;
+    margin-bottom:20px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.08);
+}
+.calc-container h3{
+    color:#0366a6;
+}
+
+/* Tables */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:10px;
+}
+th,td{
+    border:1px solid #ccc;
+    padding:8px;
+    text-align:center;
+}
+th{
+    background:#e6f2ff;
+}
+
+/* Inputs */
+input{
+    width:90%;
+    padding:6px;
+}
+
+/* Buttons */
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:transform 0.2s, background 0.2s;
+}
+button:hover{
+    transform:translateY(-2px);
+}
+.btn-calc{
+    background:#3498db;
+    color:#fff;
+    margin-top:10px;
+}
+#addRankBtn{
+    background:#5dade2;
+    color:#fff;
+    font-size:18px;
+}
+
+/* Steps & Conclusion */
+.calcSteps{
+    background:#f0f8ff;
+    padding:15px;
+    margin-top:15px;
+    border-left:6px solid #3498db;
+    border-radius:6px;
+}
+.conclusion{
+    background:#e8fff2;
+    padding:15px;
+    margin-top:20px;
+    border-left:6px solid #2ecc71;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+/* Highlight formulas */
+.info b{
+    color:#0366a6;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- Purpose & Modules -->
+<section class="info-section">
+    <h2>📌 Purpose & Modules</h2>
+    <p>This tool serves as a <strong>Spearman Rank Correlation Decision Assistant</strong> for evaluating the strength of relationships between ranked variables.</p>
+    <ul>
+        <li>💻 <b>Input Module:</b> Enter multiple ranks and optionally add a third variable for three-way correlation analysis.</li>
+        <li>🧮 <b>Calculation Module:</b> Automatically ranks data, computes d², and calculates correlation coefficients.</li>
+        <li>📊 <b>Decision Module:</b> Provides interpretation and actionable decision insights based on correlation strength.</li>
+    </ul>
+</section>
+
+<!-- How Users Utilize -->
+<section class="info-section">
+    <h2>⚙️ How Users Utilize the Service</h2>
+    <ol>
+        <li>Enter ranked observations in the input table.</li>
+        <li>Optionally click ➕ to add a third rank for three-variable analysis.</li>
+        <li>Press <b>📊 Calculate Correlation</b> to generate correlation values and calculation tables.</li>
+        <li>View step-by-step calculations and actionable decision insights below.</li>
+    </ol>
+</section>
+
+<!-- Advantages -->
+<section class="info-section">
+    <h2>⭐ Advantages to Users</h2>
+    <ul>
+        <li>Automatically calculates Spearman rank correlation without manual computation.</li>
+        <li>Supports two or three variable correlation analysis.</li>
+        <li>Provides clear visual tables for observation, d², and totals.</li>
+        <li>Generates decision support insights for business, research, or academic purposes.</li>
+        <li>User-friendly interface, works without additional statistical software.</li>
+    </ul>
+</section>
+
+<!-- Calculation Box -->
+<div class="calc-container">
+
+<div class="info">
+<b>Spearman Rank Correlation</b> measures relationship strength using ranks.<br><br>
+<b>Formula:</b> ρ = 1 − (6 Σ d²) / [ n ( n² − 1 ) ]
+</div>
+
+<h3>Input Data</h3>
+<table id="inputTable">
+<thead>
+<tr>
+<th>Obs</th>
+<th contenteditable="true">Rank 1</th>
+<th contenteditable="true">Rank 2</th>
+<th id="rank3Header">
+<button id="addRankBtn" onclick="addRank()">➕</button>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><input class="r1" type="number"></td>
+<td><input class="r2" type="number"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<button class="btn-calc" onclick="calculate()">📊 Calculate Correlation</button>
+
+<h3>Calculation Table</h3>
+<table id="calcTable"></table>
+
+<div class="calcSteps" id="steps"></div>
+
+<div class="conclusion" id="conclusion"></div>
+</div> <!-- End calc-container -->
+
+<!-- Flow of Information -->
+<section class="info-section">
+    <h2>🔄 Flow of Information</h2>
+    <div class="flow-box">
+        <div class="flow-step">📥 User Enters Data</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">🧮 System Ranks & Computes d²</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">📊 Correlation Coefficient & Insight</div>
+        <div class="flow-arrow">➡</div>
+        <div class="flow-step">📝 Decision Support Output</div>
+    </div>
+    <p>The system collects user inputs, automatically performs ranking calculations, computes Spearman's ρ, and provides actionable insights.</p>
+</section>
+
+<!-- Assumptions -->
+<section class="info-section">
+    <h2>📌 Statistical Assumptions</h2>
+    <ul>
+        <li>Observations are independent.</li>
+        <li>Variables are at least ordinal (rankable).</li>
+        <li>Monotonic relationship exists between variables.</li>
+    </ul>
+</section>
+
+<!-- Decision Support -->
+<section class="info-section">
+    <h2>🧠 Decision Support Insight</h2>
+    <p>The correlation values guide decision-making. Stronger ρ indicates higher association between variables. Managers/researchers should prioritize actions for variables with stronger rank alignment.</p>
+</section>
+
+</div> <!-- End container -->
+
+<script>
+let hasRank3=false;
+
+/* ADD RANK-3 */
+function addRank(){
+    if(hasRank3) return;
+    hasRank3=true;
+
+    document.getElementById("rank3Header").innerHTML=
+        `<span contenteditable="true">Rank 3</span>`;
+
+    document.querySelectorAll("#inputTable tbody tr").forEach(row=>{
+        row.insertCell().innerHTML=`<input class="r3" type="number">`;
+    });
+}
+
+/* AUTO ADD ROW */
+document.addEventListener("keydown",e=>{
+    if(e.key==="Enter" && e.target.tagName==="INPUT"){
+        let row=e.target.closest("tr");
+        let r1=row.querySelector(".r1")?.value;
+        let r2=row.querySelector(".r2")?.value;
+        if(r1 && r2){
+            addRow();
+            document.querySelectorAll(".r1").at(-1).focus();
+        }
+        e.preventDefault();
+    }
+});
+
+function addRow(){
+    let tb=document.querySelector("#inputTable tbody");
+    let r=tb.insertRow();
+    r.innerHTML=`
+    <td>${tb.rows.length}</td>
+    <td><input class="r1" type="number"></td>
+    <td><input class="r2" type="number"></td>
+    ${hasRank3?'<td><input class="r3" type="number"></td>':'<td></td>'}`;
+}
+
+/* RANKING */
+function rank(arr){
+    let s=[...arr].slice().sort((a,b)=>a-b);
+    return arr.map(v=>s.indexOf(v)+1);
+}
+
+/* MAIN CALCULATE */
+function calculate(){
+    let r1=[],r2=[],r3=[];
+    document.querySelectorAll(".r1").forEach((el,i)=>{
+        let r2el=document.querySelectorAll(".r2")[i];
+        let r3el=document.querySelectorAll(".r3")[i];
+        if(el.value && r2el.value){
+            r1.push(+el.value);
+            r2.push(+r2el.value);
+            if(hasRank3 && r3el?.value) r3.push(+r3el.value);
+        }
+    });
+
+    if(r1.length<2) return;
+
+    hasRank3 ? calcThree(r1,r2,r3) : calcTwo(r1,r2);
+}
+
+/* TWO RANK MODE */
+function calcTwo(a,b){
+    let R1=rank(a),R2=rank(b);
+    let n=R1.length,sum=0;
+
+    let html=`<thead><tr>
+    <th>Obs</th><th>R1</th><th>R2</th><th>d</th><th>d²</th>
+    </tr></thead><tbody>`;
+
+    R1.forEach((v,i)=>{
+        let d=v-R2[i];
+        sum+=d*d;
+        html+=`<tr><td>${i+1}</td><td>${v}</td><td>${R2[i]}</td><td>${d}</td><td>${d*d}</td></tr>`;
+    });
+
+    html+=`<tr style="font-weight:bold">
+    <td>Total</td><td>-</td><td>-</td><td>-</td><td>${sum}</td></tr></tbody>`;
+
+    document.getElementById("calcTable").innerHTML=html;
+
+    let rho=(1-(6*sum)/(n*(n*n-1))).toFixed(3);
+
+    document.getElementById("steps").innerHTML=
+    `ρ = 1 − (6 × ${sum}) / [ ${n}(${n}² − 1) ] = <b>${rho}</b>`;
+
+    conclusion(`Strong focus between Rank-1 & Rank-2`,rho);
+}
+
+/* THREE RANK MODE */
+function calcThree(a,b,c){
+    let R1=rank(a),R2=rank(b),R3=rank(c);
+    let n=R1.length,s12=0,s23=0,s13=0;
+
+    let html=`<thead><tr>
+    <th>Obs</th><th>R1</th><th>R2</th><th>R3</th>
+    <th>d12²</th><th>d23²</th><th>d13²</th>
+    </tr></thead><tbody>`;
+
+    for(let i=0;i<n;i++){
+        let d12=(R1[i]-R2[i])**2;
+        let d23=(R2[i]-R3[i])**2;
+        let d13=(R1[i]-R3[i])**2;
+        s12+=d12; s23+=d23; s13+=d13;
+
+        html+=`<tr>
+        <td>${i+1}</td><td>${R1[i]}</td><td>${R2[i]}</td><td>${R3[i]}</td>
+        <td>${d12}</td><td>${d23}</td><td>${d13}</td></tr>`;
+    }
+
+    html+=`<tr style="font-weight:bold">
+    <td>Total</td><td>-</td><td>-</td><td>-</td>
+    <td>${s12}</td><td>${s23}</td><td>${s13}</td></tr></tbody>`;
+
+    document.getElementById("calcTable").innerHTML=html;
+
+    let rho12=(1-(6*s12)/(n*(n*n-1))).toFixed(3);
+    let rho23=(1-(6*s23)/(n*(n*n-1))).toFixed(3);
+    let rho13=(1-(6*s13)/(n*(n*n-1))).toFixed(3);
+
+    document.getElementById("steps").innerHTML=
+    `<b>Correlations:</b><br>
+    R1–R2: ${rho12}<br>
+    R2–R3: ${rho23}<br>
+    R1–R3: ${rho13}`;
+
+    document.getElementById("conclusion").innerHTML=
+    `<b>Decision Insight:</b><br>
+    Strongest alignment exists where ρ is highest.<br>
+    Managers should prioritize variables with stronger rank association.`;
+}
+
+/* CONCLUSION */
+function conclusion(text,rho){
+    document.getElementById("conclusion").innerHTML=
+    `<b>Fact:</b> ${text}<br><b>ρ:</b> ${rho}<br>
+    <b>Decision:</b> Allocate resources based on strength of association.`;
+}
+</script>
+
+</body>
+</html>

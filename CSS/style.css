@@ -1,0 +1,232 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.calculator-box {
+  width: 700px;
+  background: #ffffff;
+  margin: 40px auto;
+  padding: 25px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.row {
+  display: flex;
+  align-items: Right;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input, select {
+  width: 140px;
+  padding: 5px;
+}
+
+h2, h3 {
+  margin-top: 0;
+}
+
+button {
+  padding: 8px 16px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.align-right {
+  float: right;
+  margin-top: 10px;
+}
+/* Info Sections */
+.info-section {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.info-section h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+.info-section h3 {
+    color: #34495e;
+    margin-top: 15px;
+}
+
+.info-section p, .info-section li {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+}
+
+.info-section ul {
+    padding-left: 20px;
+}
+
+.icon {
+    margin-right: 8px;
+}
+
+/* Flow Diagram */
+.flow-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.flow-step {
+    background: #3498db;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.flow-arrow {
+    margin: 0 10px;
+    font-size: 24px;
+}
+
+/* Formula Style */
+.formula {
+    background: #f4f6f8;
+    padding: 10px;
+    border-left: 4px solid #3498db;
+    font-family: 'Courier New', monospace;
+    font-size: 18px;
+}
+
+/* Animations */
+.fade-in {
+    animation: fadeIn 1.2s ease-in;
+}
+
+.slide-up {
+    animation: slideUp 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+/* Step Guide */
+.step-guide {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+.step {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Output Enhancements */
+.test-type {
+    font-weight: bold;
+    color: #2980b9;
+    margin-bottom: 8px;
+}
+
+.result-summary {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+/* Decision Box */
+.decision-box {
+    border-left: 5px solid #27ae60;
+}
+/* Step 3 enhancements */
+.step-three {
+    margin-top: 20px;
+}
+
+.run-btn {
+    background: #3498db;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.run-btn:hover {
+    background: #2980b9;
+}
+
+.output-box {
+    padding: 20px;
+    margin-top: 15px;
+    border-radius: 12px;
+    background: #f9f9f9;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+}
+
+.test-type, .result-summary, .result-details {
+    margin-bottom: 10px;
+    opacity: 0;
+    animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+.diagram-section {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9fbfc;
+}
+
+.diagram-section h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.diagram-controls {
+    margin-bottom: 15px;
+}
+
+.diagram-controls select {
+    padding: 6px;
+    margin-left: 10px;
+}
+
+.diagram-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.diagram-note {
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}

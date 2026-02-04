@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About Us – Business Analytics & Decision Support System</title>
+
+<!-- ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* -------- GLOBAL -------- */
+body{
+    margin:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:#f4f7fb;
+    color:#2c3e50;
+    line-height:1.7;
+    animation:fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* -------- NAVBAR -------- */
+.navbar{
+    background:#0b3c5d;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.navbar .logo{
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.navbar nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:16px;
+    position:relative;
+    transition:0.3s;
+}
+
+.navbar nav a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    background:#fff;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.navbar nav a:hover::after{
+    width:100%;
+}
+
+/* -------- HEADER -------- */
+.header{
+    background:#E69E7F;
+    color:#fff;
+    padding:60px 20px;
+    text-align:center;
+    animation:slideDown 1s ease;
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-30px); opacity:0;}
+    to{transform:translateY(0); opacity:1;}
+}
+
+.header h1{
+    margin:0;
+    font-size:38px;
+}
+
+.header p{
+    font-size:18px;
+    opacity:0.9;
+}
+
+/* -------- CONTAINER -------- */
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+/* -------- SECTION -------- */
+.section{
+    background:#fff;
+    padding:30px;
+    margin-top:30px;
+    border-radius:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+    transition:0.4s;
+    animation:fadeUp 0.8s ease forwards;
+}
+
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.section:hover{
+    transform:translateY(-5px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+.section h2{
+    margin-top:0;
+    color:#0b3c5d;
+    border-left:5px solid #3498db;
+    padding-left:12px;
+}
+
+/* -------- GRID -------- */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+/* -------- BOX -------- */
+.box{
+    background:#f0f6ff;
+    padding:20px;
+    border-radius:12px;
+    border-left:5px solid #3498db;
+    transition:0.4s;
+}
+
+.box:hover{
+    transform:scale(1.05);
+}
+
+.box strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+/* -------- LIST -------- */
+ul{
+    padding-left:20px;
+}
+
+li{
+    margin-bottom:6px;
+}
+
+/* -------- HOW IT WORKS -------- */
+.flow{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    text-align:center;
+}
+
+.flow div{
+    padding:22px;
+    border-radius:12px;
+    margin:10px;
+    flex:1;
+    min-width:180px;
+    font-weight:bold;
+    color:#fff;
+    transition:0.4s;
+}
+
+.flow div:hover{
+    transform:translateY(-8px) scale(1.05);
+}
+
+/* Custom colors */
+.step-input{ background:#C2A093; }
+.step-analyze{ background:#7EADA9; }
+.step-visualize{ background:#756986; }
+.step-decide{ background:#C69A69; }
+
+/* -------- VISION -------- */
+.vision{
+    background:#f6fff9;
+    border-left:5px solid #2ecc71;
+}
+
+/* -------- FOOTER -------- */
+.footer{
+    background:#E69E7F;
+    color:#fff;
+    text-align:center;
+    padding:15px;
+    margin-top:50px;
+    animation:fadeIn 1.5s;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo"><i class="fa-solid fa-chart-line"></i> Decision Support System</div>
+    <nav>
+        <a href="Mainpage-1.html"><i class="fa fa-house"></i> Home</a>
+        <a href="services.html"><i class="fa fa-briefcase"></i> Services</a>
+        <a href="Contact.html"><i class="fa fa-envelope"></i> Contact Us</a>
+    </nav>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>About Our Decision Support System</h1>
+    <p>Transforming Business Data into Smart, Actionable Decisions</p>
+</div>
+
+<div class="container">
+
+<div class="section">
+    <h2>Project Overview</h2>
+    <p>
+        <b>Business Analytics & Decision Support System</b> is an innovative web-based platform
+        designed to help users analyze business data and convert it into meaningful decisions.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Problem We Address</h2>
+    <ul>
+        <li>Difficulty interpreting raw numerical data</li>
+        <li>Manual calculations are slow and error-prone</li>
+        <li>Lack of visual decision support</li>
+        <li>No direct managerial recommendations</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Our Solution</h2>
+    <p>
+        We automate calculations, visualize insights, and provide
+        <b>decision-oriented conclusions</b> for better business outcomes.
+    </p>
+</div>
+
+<div class="section">
+    <h2>Modules Covered</h2>
+    <div class="grid">
+        <div class="box">
+            <strong><i class="fa fa-chart-pie"></i> Statistics</strong>
+            Regression Analysis<br>
+            Correlation Analysis<br>
+            Hypothesis Testing
+        </div>
+        <div class="box">
+            <strong><i class="fa fa-coins"></i> Managerial Economics</strong>
+            Demand Estimation<br>
+            Profit Maximization<br>
+            Cost Behaviour<br>
+            Break-even Analysis
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>How It Works</h2>
+    <div class="flow">
+        <div class="step-input"><i class="fa fa-database"></i><br>Input Data</div>
+        <div class="step-analyze"><i class="fa fa-magnifying-glass-chart"></i><br>Analyze</div>
+        <div class="step-visualize"><i class="fa fa-chart-column"></i><br>Visualize</div>
+        <div class="step-decide"><i class="fa fa-lightbulb"></i><br>Decide</div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Target Users</h2>
+    <ul>
+        <li>Business students</li>
+        <li>Managers & entrepreneurs</li>
+        <li>Researchers & analysts</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>Key Benefits</h2>
+    <ul>
+        <li>Time-saving automation</li>
+        <li>Accurate analysis</li>
+        <li>Better decision-making</li>
+    </ul>
+</div>
+
+<div class="section vision">
+    <h2>Vision & Future Scope</h2>
+    <p>
+        To evolve into an intelligent, AI-powered decision ecosystem for modern businesses.
+    </p>
+</div>
+
+</div>
+
+<div class="footer">
+    © 2026 Business Analytics & Decision Support System | All Rights Reserved
+</div>
+
+</body>
+</html>
